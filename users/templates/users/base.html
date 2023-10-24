@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'users/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'users/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <nav class="shadow-lg">
+        <div class="px-4 mx-auto">
+            <div class="flex justify-between">
+                <!-- Website Logo -->
+                <div>
+                    <a class="flex" href="">
+                        <img class="h-8 w-8 mr-2" src="{% static 'users/images/social.png' %}" alt="">
+                        <span class="font-semibold text-lg text-gray-500 ">Photo App</span>
+                    </a>
+                </div>
+                <!-- Website Item -->
+                <div class="space-x-1">
+                    {% if request.user.is_authenticated %}
+                    <a class="py-4 px-2 text-gray-500 font-semibold" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <a class="py-4 px-2 text-gray-500 font-semibold" href="{% url 'login' %}">Login</a>
+                    {% endif %}
+                    <a class="py-4 px-2 text-gray-500 font-semibold" href="">Link 3</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    {% block body %}
+    {% endblock %}
+</body>
+</html> 
